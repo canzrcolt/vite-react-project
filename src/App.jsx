@@ -1,47 +1,51 @@
-import React, { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Budget from './components/Budget'
+import Remaining from './components/Remaining';
+import ExpenseTotal from './components/ExpenseTotal';
+import ExpenseList from './components/ExpenseList';
+import AddExpenseForm from './components/AddExpenseForm';
+import {AppProvider} from './context/AppContext'
 
-function App() {
-  const [count, setCount] = useState(5)
+const App = () => {
+  return(
+    <AppProvider>
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button onClick={() => setCount((count) => count + 1)}> add one
-          </button>
-          <button onClick={() => setCount((count) => count - 1)}> subtract one
-          </button>
-        </p>
-        <h2>count is {count}</h2>
-        <p>
-          Edit <code>App.jsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
+    <div className="container">
+      <h1 className='mt-3'>My Budget Planner</h1>
+      <div className="row mt-3">
+        <div className='col-sm'>
+          <Budget />
+        </div>
+        <div className='col-sm'>
+          <Remaining /> 
+        </div>
+        <div className='col-sm'>
+          <ExpenseTotal />
+        </div>
+      </div>
+      <h3 className='mt-3'>Expenses</h3>
+      <div className="row mt-3">
+        <div className="col-sm">
+          <ExpenseList />
+        </div>
+        <h3 className='mt-3'>Add Expense</h3>
+        <div className='mt-3'>
+          <div className='col-sm'>
+            <AddExpenseForm />
+          </div>
+        </div>
+      </div>
     </div>
-  )
+
+    </AppProvider>
+
+
+
+
+  ) 
 }
 
-export default App
+export default App;
+
+  
